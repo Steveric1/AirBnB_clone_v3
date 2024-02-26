@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 
-from models.base_model import BaseModel
 from models import storage
+from flask import jsonify, abort, request
 from api.v1.views import app_views
-from flask import Flask, jsonify, make_response, abort, request
 from models.state import State
-import os
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
