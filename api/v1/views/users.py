@@ -9,7 +9,7 @@ from flasgger import swag_from
 
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/users/get_users.yml')
+@swag_from('documentation/users/get_users.yml', methods=['GET'])
 def get_users():
     """Retrieves the list of all User objects"""
     user = storage.all(User)
@@ -21,7 +21,7 @@ def get_users():
 
 @app_views.route('/users/<user_id>', methods=['GET'],
                  strict_slashes=False)
-@swag_from('documentation/users/get_user_by_id.yml')
+@swag_from('documentation/users/get_user_by_id.yml', methods=['GET'])
 def get_user_by_id(user_id):
     """Retrieves a User object"""
     user = storage.get(User, user_id)
@@ -32,7 +32,7 @@ def get_user_by_id(user_id):
 
 @app_views.route('/users/<user_id>', methods=['DELETE'],
                  strict_slashes=False)
-@swag_from('documentation/users/delete_user_by_id.yml')
+@swag_from('documentation/users/delete_user_by_id.yml', methods=['DELETE'])
 def delete_user_by_id(user_id):
     """Delete user object based on id"""
     user = storage.get(User, user_id)
@@ -44,7 +44,7 @@ def delete_user_by_id(user_id):
 
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/users/post_users.yml')
+@swag_from('documentation/users/post_users.yml', methods=['POST'])
 def posting():
     """Create user object"""
     if not request.get_json():
@@ -59,7 +59,7 @@ def posting():
 
 @app_views.route('/users/<user_id>', methods=['PUT'],
                  strict_slashes=False)
-@swag_from('documentation/users/put_user.yml')
+@swag_from('documentation/users/put_user.yml', methods=['PUT'])
 def put_user(user_id):
     """Updates a User object"""
     user = storage.get(User, user_id)
