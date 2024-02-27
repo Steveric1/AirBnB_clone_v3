@@ -2,11 +2,13 @@
 """Create a new Flask app instance."""
 
 from flask import Flask, jsonify
+from flask_cors import CORS
 from models import storage
 from api.v1.views import app_views
 import os
 
 app = Flask(__name__)
+CORS(app)  # Apply CORS globally to all routes
 app.register_blueprint(app_views)
 app.url_map.strict_slashes = False
 
