@@ -11,8 +11,6 @@ from api.v1.views import app_views
 
 app_views.route('/states/<state_id>/cities', methods=['GET'],
                 strict_slashes=False)
-
-
 def get_cities(state_id):
     """Returns a list of all the City objects"""
     state = storage.get(State, state_id)
