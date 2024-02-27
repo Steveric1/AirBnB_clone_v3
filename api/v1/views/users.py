@@ -3,8 +3,8 @@
 
 from models.user import User
 from models import storage
-from flask import jsonify, abort, make_response, request
 from api.v1.views import app_views
+from flask import jsonify, abort, make_response, request
 from flasgger.utils import swag_from
 
 
@@ -49,8 +49,10 @@ def posting():
     """Create user object"""
     if not request.get_json():
         abort(400, description="Not a JSON")
-    if 'name' not in request.get_json():
-        abort(400, description="Missing name")
+    if 'email' not in request.get_json():
+        abort(400, description="Missing email")
+    if 'password' not in request.get_json():
+        abort(400, description="Missing password")
     data = request.get_json()
     amenity_obj = User(**data)
     amenity_obj.save()
