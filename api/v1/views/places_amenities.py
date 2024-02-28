@@ -5,7 +5,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models import storage
 from api.v1.views import app_views
-from flask import jsonify, abort, request, make_response
+from flask import jsonify, abort, make_response
 from os import environ
 from flasgger.utils import swag_from
 
