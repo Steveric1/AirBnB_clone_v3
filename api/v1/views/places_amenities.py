@@ -28,6 +28,7 @@ def get_amenities(place_id):
 
 @app_views.route('/places/<place_id>/amenities/<amenity_id>', methods=['GET'],
                  strict_slashes=False)
+@swag_from('documentation/places_amenities/get_amenity.yml', methods=['GET'])
 def delete(place_id, amenity_id):
     """Deletes a Amenity object to a Place"""
     p_id = storage.get(Place, place_id)
@@ -50,6 +51,7 @@ def delete(place_id, amenity_id):
 
 @app_views.route('places/<place_id>/amenities/<amenity_id>', methods=['GET'],
                  strict_slashes=False)
+@swag_from('documentation/places_amenities/post_amenity.yml', methods=['GET'])
 def posting(place_id, amenity_id):
     """Link a Amenity object to a Place"""
     p_id = storage.get(Place, place_id)
